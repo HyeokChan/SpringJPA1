@@ -25,9 +25,11 @@ public class ItemService {
         //JPA가 관리하고 있는 영속성엔티티 (변경감지), 변경하고자하는 속성만 수정할 수 있다.
         // findItem <- 영속성엔티티
         Item findItem = itemRepository.findOne(itemId);
-        findItem.setName(name);
+        /*findItem.setName(name);
         findItem.setPrice(price);
-        findItem.setStockQuantity(stockQuantity);
+        findItem.setStockQuantity(stockQuantity);*/
+        // 엔티티에서 변경하는것이 낫다.
+        findItem.change(name, price, stockQuantity);
     }
 
     public List<Item> findItems() {
