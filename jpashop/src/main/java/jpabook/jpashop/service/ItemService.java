@@ -21,12 +21,13 @@ public class ItemService {
     }
 
     @Transactional
-    public void updateItem(Long itemId, Book param) {
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
         //JPA가 관리하고 있는 영속성엔티티 (변경감지), 변경하고자하는 속성만 수정할 수 있다.
+        // findItem <- 영속성엔티티
         Item findItem = itemRepository.findOne(itemId);
-        findItem.setPrice(param.getPrice());
-        findItem.setName(param.getName());
-        findItem.setStockQuantity(param.getStockQuantity());
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
     }
 
     public List<Item> findItems() {
