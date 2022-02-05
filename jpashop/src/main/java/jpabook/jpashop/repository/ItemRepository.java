@@ -16,6 +16,8 @@ public class ItemRepository {
         if (item.getId() == null) {
             em.persist(item);
         } else {
+            // 파라미터로 넘어온값으로 모든 값을 수정한다. ( 수정값이 없으면 null로 수정된다 *주의)
+            // 실무에서는 변경감지 기법으로 사용해야한다.
             em.merge(item);
         }
     }

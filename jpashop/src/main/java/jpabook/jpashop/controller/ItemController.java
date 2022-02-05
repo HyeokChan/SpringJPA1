@@ -66,6 +66,7 @@ public class ItemController {
     @PostMapping("items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") BookForm form, @PathVariable String itemId) {
 
+        //준영속엔티티
         Book book = new Book();
         book.setId(form.getId());
         book.setName(form.getName());
@@ -74,6 +75,8 @@ public class ItemController {
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
         itemService.saveItem(book);
+
+
         return "redirect:/items";
     }
 }
