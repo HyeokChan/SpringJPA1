@@ -21,6 +21,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
+    // 연관관계 주인
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
